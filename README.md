@@ -44,5 +44,6 @@ Model accuracy: Percentage accuracy of the prediction model.
 ```
 Future Plans:
 
+- Allow for saving of accurate models
+- Improve model accuracy with more data and features 
 - Build a Tkinter GUI for easier use
-- Improve model accuracy with more data and features
