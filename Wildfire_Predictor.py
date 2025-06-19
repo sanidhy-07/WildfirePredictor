@@ -1,8 +1,12 @@
 import argparse
+
+import colorama
 import pandas as pd
-import tkinter as tk
+from colorama import Fore
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+
+colorama.init(autoreset=True)
 
 parser = argparse.ArgumentParser(description='Wildfire Predictor')
 parser.add_argument("--temp", type = float, required = True)
@@ -25,9 +29,9 @@ new_input = pd.DataFrame([[args.temp, args.humidity, args.wind]], columns = ['te
 prediction = model.predict(new_input)[0]
 
 if prediction == 1:
-    print("High Risk!!!")
+    print(f"{Fore.RED}High Risk!!!")
 else:
-    print("Low Risk!!!")
+    print(f"{Fore.GREEN}Low Risk!!!")
 
 accuracy = model.score(X_test, Y_test)
-print(f' Model accuracy: {accuracy * 100:.2f}%')
+print(f'{Fore.YELLOW}Model accuracy: {accuracy * 100:.2f}%')
