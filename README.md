@@ -42,8 +42,11 @@ followed by:
 ```bash
 Model accuracy: Percentage accuracy of the prediction model.
 ```
+
+Note:
+If a created model has a low accuracy, delete the newly created Wildfire_Predictor.pkl file, and run the command again to create a new model (hopefully, with a higher accuracy)
+
 Future Plans:
 
-- Allow for saving of accurate models
 - Improve model accuracy with more data and variables
 - Build a Tkinter GUI for easier use
