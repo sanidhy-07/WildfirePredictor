@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(description='Wildfire Predictor')
 parser.add_argument("--temp", type = float, required = True)
 parser.add_argument("--humidity", type = float, required = True)
 parser.add_argument("--wind", type = float, required = True)
+parser.add_argument("--rain", type = float, required = True)
 args = parser.parse_args()
 
 if os.path.exists("Wildfire_Predictor.pkl"):
@@ -29,7 +30,7 @@ else:
         print(f"{Fore.YELLOW}Reading Data...")
         time.sleep(2)
         df = pd.read_csv("Wildfire_Data.csv")
-        X = df[['temperature', 'humidity', 'wind']]
+        X = df[['temperature', 'humidity', 'wind', 'rain']]
         Y = df['fire']
         print(f"{Fore.YELLOW}Training Model...")
         time.sleep(2)
@@ -45,7 +46,7 @@ else:
             break
         else: continue
 
-new_input = pd.DataFrame([[args.temp, args.humidity, args.wind]], columns = ['temperature', 'humidity', 'wind'])
+new_input = pd.DataFrame([[args.temp, args.humidity, args.wind, args.rain]], columns = ['temperature', 'humidity', 'wind', 'rain'])
 prediction = model.predict(new_input)[0]
 
 if prediction == 1:
