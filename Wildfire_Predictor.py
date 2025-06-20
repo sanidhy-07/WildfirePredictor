@@ -13,8 +13,7 @@ from sklearn.model_selection import train_test_split
 colorama.init(autoreset=True)
 
 if os.path.exists("Wildfire_Predictor.pkl"):
-    print(f"{Fore.YELLOW}Loading existing Model...")
-    input(f"{Fore.BLUE}Press Enter to continue...")
+    print(f"{Fore.YELLOW}Loading existing Model...\n")
     time.sleep(2)
 
 parser = argparse.ArgumentParser(description='Wildfire Predictor')
@@ -50,6 +49,8 @@ new_input = pd.DataFrame([[args.temp, args.humidity, args.wind]], columns = ['te
 prediction = model.predict(new_input)[0]
 
 if prediction == 1:
-    print(f"{Fore.RED}High Risk!!!")
+    print(f"{Fore.RED}High Risk of wildfire!")
 else:
-    print(f"{Fore.GREEN}Low Risk!!!")
+    print(f"{Fore.GREEN}Low Risk of wildfire!")
+
+print(f"{Fore.RED}Disclaimer: Do not use this to predict actual wildfire, they depend on more than just these three variables. obviously.")
